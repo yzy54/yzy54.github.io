@@ -8,20 +8,25 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.lambda表达式1.1什么是lambda表达式Lambda Lambda 是一个 匿名函数 ，我们可以把 Lambda Lambda Lambda 表达式理解为是 一段可以 传递的代码 （将代码像数据一样进行传递）。使用它可以写出更 简洁、灵活的代码。作为一种更紧凑风格，使 Java 的语言表达能力得到了提升 1.2lambda表达式的使用lamda表达式结构：  左边—&gt;lamda形">
+  <meta name="description" content="JVMjvm结构 第二章：类加载系统 1.类加载器子系统（3个阶段） 1.1.类的加载过程 通过一个类的全限定明获取定义此类的二进制字节流； 将这个字节流所代表的的静态存储结构转化为方法区的运行时数据； 在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口  1.2.链接 1.3.初始化过程 初始化阶段就是执行类构造器方法clinit（）的过程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2021/06/14/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
+<meta property="og:url" content="http://example.com/2021/06/22/JVM/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.lambda表达式1.1什么是lambda表达式Lambda Lambda 是一个 匿名函数 ，我们可以把 Lambda Lambda Lambda 表达式理解为是 一段可以 传递的代码 （将代码像数据一样进行传递）。使用它可以写出更 简洁、灵活的代码。作为一种更紧凑风格，使 Java 的语言表达能力得到了提升 1.2lambda表达式的使用lamda表达式结构：  左边—&gt;lamda形">
+<meta property="og:description" content="JVMjvm结构 第二章：类加载系统 1.类加载器子系统（3个阶段） 1.1.类的加载过程 通过一个类的全限定明获取定义此类的二进制字节流； 将这个字节流所代表的的静态存储结构转化为方法区的运行时数据； 在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口  1.2.链接 1.3.初始化过程 初始化阶段就是执行类构造器方法clinit（）的过程。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://raw.githubusercontent.com/yzy54/picBed/master/img/image-20210614170700613.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/yzy54/picBed/master/img/image-20210614170645912.png">
-<meta property="article:published_time" content="2021-06-14T11:16:49.511Z">
-<meta property="article:modified_time" content="2021-06-14T11:17:29.195Z">
+<meta property="og:image" content="c:/Users/tkfxc/AppData/Roaming/Typora/typora-user-images/image-20210621205314601.png">
+<meta property="og:image" content="c:/Users/tkfxc/AppData/Roaming/Typora/typora-user-images/image-20210621205858981.png">
+<meta property="og:image" content="c:/Users/tkfxc/AppData/Roaming/Typora/typora-user-images/image-20210621210645199.png">
+<meta property="og:image" content="c:/Users/tkfxc/AppData/Roaming/Typora/typora-user-images/image-20210621213053200.png">
+<meta property="og:image" content="c:/Users/tkfxc/AppData/Roaming/Typora/typora-user-images/image-20210621220940051.png">
+<meta property="og:image" content="c:/Users/tkfxc/AppData/Roaming/Typora/typora-user-images/image-20210621223528448.png">
+<meta property="og:image" content="c:/Users/tkfxc/AppData/Roaming/Typora/typora-user-images/image-20210621224251389.png">
+<meta property="article:published_time" content="2021-06-22T11:18:58.171Z">
+<meta property="article:modified_time" content="2021-06-22T11:18:07.878Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/yzy54/picBed/master/img/image-20210614170700613.png">
+<meta name="twitter:image" content="c:/Users/tkfxc/AppData/Roaming/Typora/typora-user-images/image-20210621205314601.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -163,66 +168,101 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-lambda表达式" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JVM" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-lambda表达式"><a href="#1-lambda表达式" class="headerlink" title="1.lambda表达式"></a>1.lambda表达式</h2><h3 id="1-1什么是lambda表达式"><a href="#1-1什么是lambda表达式" class="headerlink" title="1.1什么是lambda表达式"></a>1.1什么是lambda表达式</h3><p>Lambda Lambda 是一个 匿名函数 ，我们可以把 Lambda Lambda Lambda 表达式理解为是 一段可以 传递的代码 （将代码像数据一样进行传递）。使用它可以写出更 简洁、灵活的代码。作为一种更紧凑风格，使 Java 的语言表达能力得到了提升</p>
-<h3 id="1-2lambda表达式的使用"><a href="#1-2lambda表达式的使用" class="headerlink" title="1.2lambda表达式的使用"></a>1.2lambda表达式的使用</h3><p>lamda表达式结构：</p>
+        <h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><h2 id="jvm结构"><a href="#jvm结构" class="headerlink" title="jvm结构"></a>jvm结构</h2><p><img src="C:\Users\tkfxc\AppData\Roaming\Typora\typora-user-images\image-20210621205314601.png" alt="image-20210621205314601"></p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="第二章：类加载系统"><a href="#第二章：类加载系统" class="headerlink" title="第二章：类加载系统"></a>第二章：类加载系统</h1><p><img src="C:\Users\tkfxc\AppData\Roaming\Typora\typora-user-images\image-20210621205858981.png" alt="image-20210621205858981"></p>
+<h2 id="1-类加载器子系统（3个阶段）"><a href="#1-类加载器子系统（3个阶段）" class="headerlink" title="1.类加载器子系统（3个阶段）"></a>1.类加载器子系统（3个阶段）</h2><p><img src="C:\Users\tkfxc\AppData\Roaming\Typora\typora-user-images\image-20210621210645199.png" alt="image-20210621210645199"></p>
+<h3 id="1-1-类的加载过程"><a href="#1-1-类的加载过程" class="headerlink" title="1.1.类的加载过程"></a>1.1.类的加载过程</h3><ul>
+<li>通过一个类的全限定明获取定义此类的二进制字节流；</li>
+<li>将这个字节流所代表的的静态存储结构转化为方法区的运行时数据；</li>
+<li>在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口</li>
+</ul>
+<h3 id="1-2-链接"><a href="#1-2-链接" class="headerlink" title="1.2.链接"></a>1.2.链接</h3><p><img src="C:\Users\tkfxc\AppData\Roaming\Typora\typora-user-images\image-20210621213053200.png" alt="image-20210621213053200"></p>
+<h3 id="1-3-初始化过程"><a href="#1-3-初始化过程" class="headerlink" title="1.3.初始化过程"></a>1.3.初始化过程</h3><ul>
+<li><p>初始化阶段就是执行类构造器方法clinit（）的过程。</p>
+</li>
+<li><p>此方法不需要定义，是javac编译器自动收集类中的所有类变量的赋值动作和静态代码块中的语句合并而来。 <code>我们注意到如果没有静态变量c，那么字节码文件中就不会有clinit方法</code></p>
+</li>
+<li><p>构造器方法中指令按语句在源文件中出现的顺序执行</p>
+</li>
+<li><p>clinit()不同于类的构造器。（关联：构造器是虚拟机视角下的init()）</p>
+</li>
+<li><p>若该类具有父类，jvm会保证子类的clinit()执行前，父类的clinit()已经执行完毕</p>
+</li>
+<li><p>虚拟机必须保证一个类的clinit()方法在多线程下被同步加锁。</p>
+</li>
+</ul>
+<h2 id="2-类加载器的分类"><a href="#2-类加载器的分类" class="headerlink" title="2.类加载器的分类"></a>2.类加载器的分类</h2><ul>
+<li><p>VM支持两种类型的加载器，分别为**引导类加载器（BootStrap ClassLoader）*<em>和*<em>自定义类加载器（User-Defined ClassLoader）</em></em></p>
+</li>
+<li><p>从概念上来讲，自定义类加载器一般指的是程序中由开发人员自定义的一类类加载器，但是java虚拟机规范却没有这么定义，而是<strong>将所有派生于抽象类ClassLoader的类加载器都划分为自定义类加载器</strong>。</p>
+</li>
+<li><p>无论类加载器的类型如何划分，在程序中我们最常见的类加载器始终只有三个，如下所示</p>
+</li>
+</ul>
+<p><img src="C:\Users\tkfxc\AppData\Roaming\Typora\typora-user-images\image-20210621220940051.png" alt="image-20210621220940051"></p>
 <ul>
-<li><p>左边—&gt;lamda形参列表</p>
+<li>对于用户自定义类，默认使用系统类加载器进行加载</li>
+<li>系统的核心类库（），都是使用引导类加载器进行加载（bootstrap）</li>
+</ul>
+<h3 id="2-1虚拟机自带的加载器"><a href="#2-1虚拟机自带的加载器" class="headerlink" title="2.1虚拟机自带的加载器"></a>2.1虚拟机自带的加载器</h3><p><strong>①启动类加载器（引导类加载器，BootStrap ClassLoader）</strong></p>
+<ul>
+<li>这个类加载使用<strong>C/C++语言实现的</strong>，嵌套在JVM内部</li>
+<li>它用来加载java的核心库（JAVA_HOME/jre/lib/rt.jar/resources.jar或sun.boot.class.path路径下的内容），用于提供JVM自身需要的类</li>
+<li>并不继承自java.lang.ClassLoader,没有父加载器</li>
+<li>加载拓展类和应用程序类加载器，并指定为他们的父加载器</li>
+<li>处于安全考虑，BootStrap启动类加载器只加载包名为java、javax、sun等开头的类</li>
+</ul>
+<p><strong>②拓展类加载器（Extension ClassLoader）</strong></p>
+<ul>
+<li>java语言编写 ，由sun.misc.Launcher$ExtClassLoader实现。</li>
+<li>派生于ClassLoader类</li>
+<li>父类加载器为启动类加载器</li>
+<li>从java.ext.dirs系统属性所指定的目录中加载类库，或从JDK的安装目录的jre/lib/ext子目录（扩展目录）下加载类库。<strong>如果用户创建的JAR放在此目录下，也会由拓展类加载器自动加载</strong></li>
+</ul>
+<p><strong>③应用程序类加载器（系统类加载器，AppClassLoader）</strong></p>
+<ul>
+<li>java语言编写， 由sun.misc.Launcher$AppClassLoader实现。</li>
+<li>派生于ClassLoader类</li>
+<li>父类加载器为拓展类加载器</li>
+<li>它负责加载环境变量classpath或系统属性 java.class.path指定路径下的类库</li>
+<li><strong>该类加载器是程序中默认的类加载器</strong>，一般来说，java应用的类都是由它来完成加载</li>
+<li>通过ClassLoader#getSystemClassLoader()方法可以获取到该类加载器</li>
+</ul>
+<h3 id="2-2用户自定义类加载器"><a href="#2-2用户自定义类加载器" class="headerlink" title="2.2用户自定义类加载器"></a>2.2用户自定义类加载器</h3><ul>
+<li><p>隔离加载类</p>
 </li>
-<li><p>右边—-&gt;lambda体</p>
+<li><p>修改类加载的方式</p>
+</li>
+<li><p>拓展加载源</p>
+</li>
+<li><p>防止源码泄漏</p>
 </li>
 </ul>
-<p>lambda表达式的本质：作为函数式接口的实例</p>
-<h3 id="1-3语法格式（六种格式）"><a href="#1-3语法格式（六种格式）" class="headerlink" title="1.3语法格式（六种格式）"></a>1.3语法格式（六种格式）</h3><p><img src="https://raw.githubusercontent.com/yzy54/picBed/master/img/image-20210614170700613.png" alt="image-20210614170700613"></p>
-<p><img src="https://raw.githubusercontent.com/yzy54/picBed/master/img/image-20210614170645912.png" alt="image-20210614170645912"></p>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><ul>
-<li>左边：lambda形参列表的类型可以省略（类型推断）。如果lamdba形参列表只有一个参数则可以省略</li>
-<li>右边：lambda体用{}包裹。如果只有一条执行语句（可以是return），那么此时可以省略{}和return</li>
+<h2 id="2-3ClassLoader的常用方法及获取方法"><a href="#2-3ClassLoader的常用方法及获取方法" class="headerlink" title="2.3ClassLoader的常用方法及获取方法"></a>2.3ClassLoader的常用方法及获取方法</h2><h4 id="ClassLoader类，它是一个抽象类，其后所有的类加载器都继承自ClassLoader（不包括启动类加载器）"><a href="#ClassLoader类，它是一个抽象类，其后所有的类加载器都继承自ClassLoader（不包括启动类加载器）" class="headerlink" title="- ClassLoader类，它是一个抽象类，其后所有的类加载器都继承自ClassLoader（不包括启动类加载器）"></a>- ClassLoader类，它是一个抽象类，其后所有的类加载器都继承自ClassLoader（不包括启动类加载器）</h4><h4 id="获取ClassLoader的途径"><a href="#获取ClassLoader的途径" class="headerlink" title="- 获取ClassLoader的途径"></a>- 获取ClassLoader的途径</h4><p><img src="C:\Users\tkfxc\AppData\Roaming\Typora\typora-user-images\image-20210621223528448.png" alt="image-20210621223528448"></p>
+<h2 id="2-4双亲委派机制（面试题）"><a href="#2-4双亲委派机制（面试题）" class="headerlink" title="2.4双亲委派机制（面试题）"></a>2.4双亲委派机制（面试题）</h2><h4 id="Java虚拟机对class文件采用的是按需加载的方式，也就是说当需要使用该类时才会将她的class文件加载到内存生成的class对象。而且加载某个类的class文件时，java虚拟机采用的是双亲微拍模式，即把请求交由父类处理，它是一种任务委派-模式"><a href="#Java虚拟机对class文件采用的是按需加载的方式，也就是说当需要使用该类时才会将她的class文件加载到内存生成的class对象。而且加载某个类的class文件时，java虚拟机采用的是双亲微拍模式，即把请求交由父类处理，它是一种任务委派-模式" class="headerlink" title="Java虚拟机对class文件采用的是按需加载的方式，也就是说当需要使用该类时才会将她的class文件加载到内存生成的class对象。而且加载某个类的class文件时，java虚拟机采用的是双亲微拍模式，即把请求交由父类处理，它是一种任务委派 模式"></a>Java虚拟机对class文件采用的是按需加载的方式，也就是说当需要使用该类时才会将她的class文件加载到内存生成的class对象。而且加载某个类的class文件时，java虚拟机采用的是双亲微拍模式，即把请求交由父类处理，它是一种任务委派 模式</h4><p><img src="C:\Users\tkfxc\AppData\Roaming\Typora\typora-user-images\image-20210621224251389.png" alt="image-20210621224251389"></p>
+<h2 id="2-5沙箱机制"><a href="#2-5沙箱机制" class="headerlink" title="2.5沙箱机制"></a>2.5沙箱机制</h2><p>​    自定义String类，但是在加载子弟敬意String类的时候回率先使用引导类加载器加载，而引导类加载器在加载过程中会先加载jdk自带的文件（rt.jar包中的java\lang\String.class）,报错信息说没有main方法就是因为加载的是rt.jar包中的String类。这样可以保证对java核心源代码的保护，这就是<strong>沙箱安全机制</strong>.</p>
+<h2 id="2-6其他"><a href="#2-6其他" class="headerlink" title="2.6其他"></a>2.6其他</h2><p>在jvm中表示两个class对象是否为同一个类存在的两个必要条件</p>
+<ul>
+<li>类的完整类名必须一致，包括包名</li>
+<li>加载这个类的ClassLoader（指ClassLoader实例对象）必须相同</li>
 </ul>
-<h3 id="1-4函数式接口"><a href="#1-4函数式接口" class="headerlink" title="1.4函数式接口"></a>1.4函数式接口</h3><h4 id="只包含一个抽象方法的接口，称为-函数式接口"><a href="#只包含一个抽象方法的接口，称为-函数式接口" class="headerlink" title="只包含一个抽象方法的接口，称为 函数式接口"></a>只包含一个抽象方法的接口，称为 函数式接口</h4><p>@FunctionalInterface 注解，这样做可以检测是否是一个函数式接口</p>
-<h3 id="1-5方法引用"><a href="#1-5方法引用" class="headerlink" title="1.5方法引用"></a>1.5方法引用</h3><ul>
-<li><p>当要传递给Lambda体的操作，已经有实现方法了可以使用方法引用</p>
-</li>
-<li><p>方法引用可以看做是 Lambda表达式深层次的。换句话说，方法 引用就 是Lambda表达式 ，也就是 函数式接口的一个实例，通过方法名字来指向 一个方法，可以认为是 Lambda 表达式的语法糖</p>
-</li>
+<p>换句话说，在jvm中，即使这两个类对象（class对象）来源同一个Class文件，被同一个虚拟机所加载，但只要加载它们的ClassLoader实例对象不同，那么这两个类对象也是不相等的.</p>
+<h2 id="2-7类的主动使用和被动使用"><a href="#2-7类的主动使用和被动使用" class="headerlink" title="2.7类的主动使用和被动使用"></a>2.7类的主动使用和被动使用</h2><p>主动使用，分为七种情况</p>
+<ul>
+<li>创建类的实例</li>
+<li>访问某各类或接口的静态变量，或者对静态变量赋值</li>
+<li>调用类的静态方法</li>
+<li>反射 比如Class.forName(com.dsh.jvm.xxx)</li>
+<li>初始化一个类的子类</li>
+<li>java虚拟机启动时被标明为启动类的类</li>
+<li>JDK 7 开始提供的动态语言支持：<br> java.lang.invoke.MethodHandle实例的解析结果REF_getStatic、REF_putStatic、REF_invokeStatic句柄对应的类没有初始化，则初始化</li>
 </ul>
-<h4 id="格式：使用操作符-“-”-将类-或对象-与-方法名分隔开"><a href="#格式：使用操作符-“-”-将类-或对象-与-方法名分隔开" class="headerlink" title="格式：使用操作符 “:: ” 将类 (或对象 ) 与 方法名分隔开"></a>格式：使用操作符 “:: ” 将类 (或对象 ) 与 方法名分隔开</h4><h4 id="使用场景："><a href="#使用场景：" class="headerlink" title="使用场景："></a>使用场景：</h4><ul>
-<li><p>对象 :: 实例方法名</p>
-</li>
-<li><p> 类:: 静态方法名</p>
-</li>
-<li><p> 类:: 实例方法名</p>
-</li>
-<li><p>当函数式接口方法的 （第一个参数 是需要引用 方法的调者，并且第二 个参数是需要引用方法的参数(或无参数 )时）： </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassName::methodName </span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">//情况一（非静态方法，使用对象调用）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        PrintStream ps = System.out;</span><br><span class="line">        Consumer&lt;String&gt; con = ps::println;</span><br><span class="line">        con.accept(<span class="string">&quot;beijing&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;---------&quot;</span>);</span><br><span class="line">        Consumer&lt;String&gt; con2 = (str)-&gt; System.out.println(str);</span><br><span class="line">        con2.accept(<span class="string">&quot;beijing&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//情况二静态方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Comparator&lt;Integer&gt; com1 = (t1, t2)-&gt;Integer.compare(t1, t2);</span><br><span class="line">        System.out.println(com1.compare(<span class="number">12</span>, <span class="number">21</span>));</span><br><span class="line">        <span class="comment">//方法引用</span></span><br><span class="line">        System.out.println(<span class="string">&quot;-----------&quot;</span>);</span><br><span class="line">        Comparator&lt;Integer&gt; com2 = Integer::compare;</span><br><span class="line">        System.out.println(com2.compare(<span class="number">12</span>, <span class="number">21</span>));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        情况三：类调用非静态方法</span></span><br><span class="line">        <span class="comment">//第一个参数作为第二个参数的调用者出现</span></span><br><span class="line"><span class="comment">//        int compare(s1, s2)</span></span><br><span class="line"><span class="comment">//        int t1.compareTo(t2)</span></span><br><span class="line">        Comparator&lt;String&gt; com1 = (s1, s2) -&gt; s1.compareTo(s2);</span><br><span class="line">        System.out.println(com1.compare(<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;abd&quot;</span>));</span><br><span class="line">        System.out.println(<span class="string">&quot;----------&quot;</span>);</span><br><span class="line">        Comparator&lt;String&gt; com2 = String::compareTo;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="使用要求"><a href="#使用要求" class="headerlink" title="使用要求"></a>使用要求</h4><p>​    要求接口中的抽象方法的形参列表和返回值类型与方法引用的方法的形参列表和返回值相同</p>
-<h3 id="1-6构造器引用"><a href="#1-6构造器引用" class="headerlink" title="1.6构造器引用"></a>1.6构造器引用</h3><h4 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassName::<span class="keyword">new</span> </span><br></pre></td></tr></table></figure>
-
-<p>可以把构造器引用赋值给定义的方法，要求 构造器参数列表要与接口中抽象</p>
-<h4 id="如果有多个构造器，会自动选择与其参数匹配的构造器"><a href="#如果有多个构造器，会自动选择与其参数匹配的构造器" class="headerlink" title="如果有多个构造器，会自动选择与其参数匹配的构造器"></a>如果有多个构造器，会自动选择与其参数匹配的构造器</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> jdk8;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Emp</span> </span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Emp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;construct0&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Emp</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        System.out.println(<span class="string">&quot;construct1&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Emp</span><span class="params">(String name, <span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        System.out.println(<span class="string">&quot;construct2&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Emp&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, id=&quot;</span> + id +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Function&lt;Integer, Emp&gt; func1 = Emp::<span class="keyword">new</span>;</span><br><span class="line">    Emp apply = func1.apply(<span class="number">1002</span>);</span><br><span class="line">    System.out.println(apply);</span><br><span class="line"></span><br><span class="line">    BiFunction&lt;String, Integer, Emp&gt; func2 = Emp::<span class="keyword">new</span>;</span><br><span class="line">    Emp tom = func2.apply(<span class="string">&quot;tom&quot;</span>, <span class="number">1002</span>);</span><br><span class="line">    System.out.println(tom);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">construct1</span><br><span class="line">Emp&#123;name=&#x27;null&#x27;, id=1002&#125;</span><br><span class="line">construct2</span><br><span class="line">Emp&#123;name=&#x27;tom&#x27;, id=1002&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-7数组引用"><a href="#1-7数组引用" class="headerlink" title="1.7数组引用"></a>1.7数组引用</h3><p>语法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type[]::<span class="keyword">new</span></span><br></pre></td></tr></table></figure>
-
-<p>数组引用可以看成一个类，写法与构造器完全相同</p>
+<p>除了以上七种情况，其他使用java类的方式都被看作是对类的被动使用，都不会导致类的初始化。</p>
 
       
 
@@ -302,7 +342,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/14/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/22/JVM/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -316,17 +356,8 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/06/22/JVM/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/06/05/Spring%E5%AD%A6%E4%B9%A0AOP/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/06/14/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
